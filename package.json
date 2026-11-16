@@ -1,0 +1,82 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "br-generators",
+  "title": "BR Test Data Generators",
+  "description": "Generate valid Brazilian test data: CPF, CNPJ and addresses.",
+  "icon": "icon.png",
+  "author": "carlos",
+  "categories": ["Developer Tools"],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "generate-cpf",
+      "title": "Generate CPF",
+      "description": "Generate a valid CPF and copy or paste it.",
+      "mode": "no-view"
+    },
+    {
+      "name": "generate-cnpj",
+      "title": "Generate CNPJ",
+      "description": "Generate a valid CNPJ and copy or paste it.",
+      "mode": "no-view",
+      "preferences": [
+        {
+          "name": "alphanumeric",
+          "type": "checkbox",
+          "required": false,
+          "default": false,
+          "title": "CNPJ format",
+          "label": "Alphanumeric (new 2026 format)",
+          "description": "Generate the alphanumeric CNPJ format instead of digits only."
+        }
+      ]
+    },
+    {
+      "name": "generate-address",
+      "title": "Generate Address",
+      "description": "Generate a real Brazilian address (via ViaCEP) with a random number.",
+      "mode": "view"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "formatted",
+      "type": "checkbox",
+      "required": false,
+      "default": true,
+      "title": "Punctuation",
+      "label": "Format with punctuation",
+      "description": "Output 123.456.789-09 instead of 12345678909."
+    },
+    {
+      "name": "action",
+      "type": "dropdown",
+      "required": false,
+      "default": "copy",
+      "title": "Action",
+      "description": "What to do with a generated CPF/CNPJ.",
+      "data": [
+        { "title": "Copy to clipboard", "value": "copy" },
+        { "title": "Paste into frontmost app", "value": "paste" }
+      ]
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.93.0",
+    "@raycast/utils": "^1.19.0"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^2.0.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.6.0"
+  },
+  "scripts": {
+    "build": "ray build",
+    "dev": "ray develop",
+    "lint": "ray lint",
+    "fix-lint": "ray lint --fix"
+  }
+}
